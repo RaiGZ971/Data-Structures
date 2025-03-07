@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="159.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fishdev.datastructure.controllers.LinkedListPageController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="183.0" prefWidth="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Canvas height="194.0" width="359.0" />
+            <HBox prefHeight="30.0" prefWidth="359.0">
+               <children>
+                  <MFXCheckbox onAction="#displayLinkedList" prefHeight="27.0" prefWidth="61.0" text="Display Structure" />
+                  <Pane prefHeight="30.0" prefWidth="595.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <MFXButton onAction="#createLinkedList" prefHeight="18.0" prefWidth="176.0" text="Create Empty Linked List">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </MFXButton>
+            <HBox prefHeight="31.0" prefWidth="359.0">
+               <children>
+                  <MFXButton onAction="#clickedInsert" prefHeight="66.0" prefWidth="77.0" text="Insert">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </MFXButton>
+                  <MFXTextField fx:id="insertValue" alignment="CENTER" floatMode="BORDER" floatingText="value" prefHeight="57.0" prefWidth="84.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="370.0">
+               <children>
+                  <MFXButton onAction="#clickedDelete" prefHeight="48.0" prefWidth="77.0" text="Delete">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </MFXButton>
+                  <MFXTextField fx:id="deleteValue" alignment="CENTER" floatMode="BORDER" floatingText="value" prefHeight="5.0" prefWidth="56.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </MFXTextField>
+                  <Label text="or">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <MFXTextField fx:id="deleteIndex" alignment="CENTER" floatMode="BORDER" floatingText="index" prefHeight="5.0" prefWidth="56.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="359.0">
+               <children>
+                  <MFXButton onAction="#clickedReverseLinkedList" prefHeight="49.0" prefWidth="135.0" text="Reverse Linked List">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </MFXButton>
+                  <MFXButton onAction="#clickedRemovedDuplicate" prefHeight="49.0" prefWidth="135.0" text="Remove Duplicate" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>

@@ -1,0 +1,41 @@
+
+.root{
+	-fx-primary-color: "2C2C2C";
+	-fx-secondary-color: "7E7A7A";
+	-fx-white-color: "F5F5F5";
+}
+
+/**************************************************
+ * Buttons
+**************************************************/
+
+.mfx-button {
+	-fx-text-fill: -fx-white-color;
+	-fx-background-color: -fx-primary-color;
+}
+
+.outline-button {
+	-fx-background-color: transparent;
+	-fx-border-color: -fx-primary-color;
+	-fx-border-radius: 3;
+
+	-fx-text-fill: -fx-primary-color;
+}
+
+.outline-button:hover {
+	-fx-background-color: -fx-secondary-color;
+	-fx-text-fill: white;
+}
+
+/**************************************************
+ * Checkboxes
+**************************************************/
+.mfx-checkbox {
+	-fx-text-fill: -fx-primary-color;
+	-mfx-text-expand: true;
+	-mfx-main: -fx-primary-color;
+	-fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+    -fx-translate-x: -15;
+    -mfx-gap: 4;
+}
