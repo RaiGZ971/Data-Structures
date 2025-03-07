@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+import com.fishdev.datastructure.DataStructures.*;
+
 public class MainApplication extends Application{
     @Override
     public void start(Stage stage) throws IOException {
