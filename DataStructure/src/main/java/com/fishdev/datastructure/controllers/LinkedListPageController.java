@@ -28,13 +28,13 @@ public class LinkedListPageController{
 
     @FXML
     void clickedInsert(ActionEvent event) {
-        myObject.insert(insertValue.getText());
+        myObject.insert(Integer.parseInt(insertValue.getText()));
     }
 
     @FXML
     void clickedDelete(ActionEvent event) {
         System.out.println("\t\t\t-Run Delete");
-        myObject.delete(deleteValue.getText());
+        myObject.delete(Integer.parseInt(deleteValue.getText()));
 
     }
 

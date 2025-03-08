@@ -28,7 +28,7 @@ public class QueuePageController {
     @FXML
     void clickedEnqueue(ActionEvent event) {
         System.out.println("\t\t\t-Run Enqueue");
-        myObject.insert(enqueueValue.getText());
+        myObject.insert(Integer.parseInt(enqueueValue.getText()));
     }
 
     @FXML

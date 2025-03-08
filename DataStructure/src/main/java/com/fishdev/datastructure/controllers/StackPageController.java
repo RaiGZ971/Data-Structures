@@ -28,7 +28,7 @@ public class StackPageController {
 
     @FXML
     void clickedPush(ActionEvent event) {
-        myObject.insert(pushValue.getText());
+        myObject.insert(Integer.parseInt(pushValue.getText()));
     }
 
     @FXML
@@ -40,7 +40,7 @@ public class StackPageController {
     @FXML
     void clickedModify(ActionEvent event) {
         System.out.println("\t\t\t-Run Modify");
-        myObject.modify(modifyValue.getText(), modifyNewValue.getText());
+        myObject.modify(Integer.parseInt(modifyValue.getText()), Integer.parseInt(modifyNewValue.getText()));
     }
 
 }

@@ -3,17 +3,30 @@ package com.fishdev.datastructure;
 public class DataStructures {
 
     public interface Structures{
-        public void insert(String value);
+        public void insert(int value);
         public void display();
     }
 
     public static class Node{
-        String value;
-        Node next;
+        int value;
+        Node next, left, right;
 
-        public Node(String _value){
-            value = _value;
-            next = null;
+        public Node(int _value, String structure){
+            switch(structure){
+                case "ONE_NODE_PATH":
+                    value = _value;
+                    next = null;
+                    break;
+                case "TWO_NODE_PATH":
+                    value = _value;
+                    left = null;
+                    right = null;
+                    break;
+                default:
+                    System.out.println("[NO NUMBER OF NODE PATH AVAILABLE]");
+                    break;
+            }
+
         }
     }
 
@@ -22,22 +35,29 @@ public class DataStructures {
      ************************************************* */
 
     public static class Array implements Structures {
-        String[] array;
+        int[] array;
         int currentSize = 0;
 
         @Override
-        public void insert(String value) {
+        public void insert(int value) {
             System.out.println("\t\t\t-Run Insert("+ value + ")");
-            array[currentSize] = value;
-            currentSize++;
+            if(currentSize < array.length){
+                array[currentSize] = value;
+                currentSize++;
+                return;
+            }
+            System.out.println("\t\t\t\t~Array is full. Please remove item)");
+
         }
 
-        public void insert(String value, String index) {
+        public void insert(int value, int index) {
             System.out.println("\t\t\t-Run Insert("+ value + ")");
-            array[Integer.parseInt(index)] = value;
-            if(Integer.parseInt(index) > currentSize){
-                currentSize = Integer.parseInt(index) + 1;
+            array[index] = value;
+            if(index > currentSize){
+                currentSize = index + 1;
+                return;
             }
+            System.out.println("\t\t\t\t~Index not found. Please try again)");
         }
 
         @Override
@@ -45,17 +65,18 @@ public class DataStructures {
             for(int i = 0; i < currentSize; i++){
                 System.out.print(array[i] + " ");
             }
+            System.out.println();
         }
 
         public void configArray(int size){
-            array = new String[size];
+            array = new int[size];
         }
 
-        public void delete(String value) {
+        public void delete(int value) {
             for(int i = 0; i < currentSize; i++){
 
-                if(array[i] != null && array[i].equals(value)){
-                    array[i] = null;
+                if(array[i] != 0 && array[i] == value){
+                    array[i] = 0;
                     return;
                 }
             }
@@ -63,10 +84,10 @@ public class DataStructures {
 
         public void ascendingOrder(){
             for(int i = 1; i < currentSize; i++){
-                String key = array[i];
+                int key = array[i];
                 int j = i - 1;
 
-                while(j >= 0 && Integer.parseInt(array[j]) > Integer.parseInt(key) ){
+                while(j >= 0 && array[j] > key){
                     array[j + 1] = array[j];
                     j = j - 1;
                 }
@@ -77,14 +98,11 @@ public class DataStructures {
         public void descendingOrder(){
             this.ascendingOrder();
             int j = currentSize - 1;
-            String temp;
-            for(int i = 0; i < j; i++){
-                System.out.println(array[j]);
+            int temp;
+            for(int i = 0; i < j; i++, j--){
                 temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
-
-                j--;
             }
 
         }
@@ -99,10 +117,10 @@ public class DataStructures {
         private Node head;
 
         @Override
-        public void insert(String value) {
+        public void insert(int value) {
             System.out.println("\t\t\t-Run Insert("+ value + ")");
 
-            Node newNode = new Node(value);
+            Node newNode = new Node(value, "ONE_NODE_PATH");
 
             //CREATE THE FIRST NODE
             if(head == null){
@@ -139,7 +157,7 @@ public class DataStructures {
 
         }
 
-        public void delete(String value) {
+        public void delete(int value) {
            if(head == null){
                System.out.println("\t\t\t\t~Linked List is empty, cannot delete.");
                return;
@@ -148,13 +166,13 @@ public class DataStructures {
            Node selectedNode = head;
            Node prev = null;
 
-           if(selectedNode.value.equals(value)){        //Matched value at the front of Linked List
+           if(selectedNode.value == value){        //Matched value at the front of Linked List
                head = head.next;
                System.out.println("\t\t\t\t~"+ value + " Successfully Deleted");
                return;
            }
 
-           while(selectedNode != null && !selectedNode.value.equals(value)){        //Search matched value in Linked List
+           while(selectedNode != null && selectedNode.value != value){        //Search matched value in Linked List
                prev = selectedNode;
                selectedNode = selectedNode.next;
            }
@@ -197,7 +215,7 @@ public class DataStructures {
                 Node innerNode = outerNode;
 
                 while(innerNode.next != null){
-                    if(innerNode.next.value.equals(outerNode.value)){
+                    if(innerNode.next.value == outerNode.value){
                         innerNode.next = innerNode.next.next;
                     }else{
                         innerNode = innerNode.next;
@@ -218,7 +236,7 @@ public class DataStructures {
         private int currentSize = 0;
 
         @Override
-        public void insert(String value) {
+        public void insert(int value) {
             System.out.println("\t\t\t-Run Push("+ value + ")");
 
             if(currentSize == maxSize){
@@ -226,7 +244,7 @@ public class DataStructures {
                 return;
             }
 
-            Node newNode = new Node(value);
+            Node newNode = new Node(value, "ONE_NODE_PATH");
             newNode.next = top;
             top = newNode;
             currentSize++;
@@ -251,23 +269,23 @@ public class DataStructures {
             System.out.println(output);
         }
 
-        public String pop() {
+        public void pop() {
             if(top == null){
-                return "\t\t\t\t~Stack Underflow, Cannot pop.";
+                System.out.println("\t\t\t\t~Stack Underflow, Cannot pop.");
+                return;
             }
 
-            String poppedValue = top.value;
+            int poppedValue = top.value;
             top = top.next;
             currentSize--;
             System.out.println("\t\t\t\t~"+ poppedValue + ", Popped Complete.");
-            return poppedValue;
         }
 
-        public void modify(String value, String newValue) {
+        public void modify(int value, int newValue) {
             Node selectedNode = top;
 
             while(selectedNode != null){
-                if(selectedNode.value.equals(value)){
+                if(selectedNode.value == value){
                     selectedNode.value = newValue;
                     System.out.println("\t\t\t\t~"+ value + " Successfully Modified");
                     return;
@@ -286,10 +304,10 @@ public class DataStructures {
         private Node rear;
 
         @Override
-        public void insert(String value) {
+        public void insert(int value) {
             System.out.println("\t\t\t-Run Enqueue("+ value + ")");
 
-            Node newNode = new Node(value);
+            Node newNode = new Node(value, "ONE_NODE_PATH");
 
             //CREATE THE FIRST NODE
             if(front == null){
@@ -326,7 +344,7 @@ public class DataStructures {
                 return;
             }
 
-            String dequeuedValue = front.value;
+            int dequeuedValue = front.value;
             front = front.next;
             System.out.println("\t\t\t\t~"+ dequeuedValue + ", Dequeued Complete.");
         }
@@ -346,9 +364,12 @@ public class DataStructures {
      ************************************************* */
 
     public static class BinaryTree implements Structures{
+        Node root;
+
         @Override
-        public void insert(String value) {
+        public void insert(int value) {
             System.out.println("\t\t\t-Run Insert");
+            
         }
 
         @Override

@@ -29,16 +29,16 @@ public class ArrayPageController extends GlobalController {
     @FXML
     void clickedInsert(ActionEvent event) {
         if(insertIndex.getText().isEmpty()){
-            myObject.insert(insertValue.getText());
+            myObject.insert(Integer.parseInt(insertValue.getText()));
             return;
         }
-        myObject.insert(insertValue.getText(), insertIndex.getText());
+        myObject.insert(Integer.parseInt(insertValue.getText()), Integer.parseInt(insertIndex.getText()));
     }
 
     @FXML
     void clickedDelete(ActionEvent event) {
         System.out.println("\t\t\t-Run Delete");
-        myObject.delete(deleteValue.getText());
+        myObject.delete(Integer.parseInt(deleteValue.getText()));
     }
 
     @FXML
