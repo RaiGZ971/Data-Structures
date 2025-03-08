@@ -1,5 +1,8 @@
 package com.fishdev.datastructure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataStructures {
 
     public interface Structures{
@@ -350,11 +353,11 @@ public class DataStructures {
         }
 
         public void highlightFront(){
-
+            System.out.println("FRONT OF QUEUE : " + front.value);
         }
 
         public void highlightRear(){
-
+            System.out.println("FRONT OF QUEUE : " + rear.value);
         }
 
     }
@@ -366,15 +369,143 @@ public class DataStructures {
     public static class BinaryTree implements Structures{
         Node root;
 
+        Node insertNodeRecursion(Node root, int value){
+
+            Node newNode = new Node(value, "TWO_NODE_PATH");
+
+            if(root == null){
+                root = newNode;
+                return root;
+            }
+
+            if(value < root.value){
+                root.left = insertNodeRecursion(root.left, value);
+            }else if(value > root.value){
+                root.right = insertNodeRecursion(root.right, value);
+            }
+
+            return root;
+        }
+
         @Override
         public void insert(int value) {
-            System.out.println("\t\t\t-Run Insert");
-            
+            System.out.println("\t\t\t-Run Insert (" + value +")");
+            root = insertNodeRecursion(root, value);
+        }
+
+        void inOrderRecursion(Node root){
+            if(root != null){
+                inOrderRecursion(root.left);
+                System.out.print(root.value + " ");
+                inOrderRecursion(root.right);
+            }
+        }
+
+        void preOrderRecursion(Node root){
+            if(root != null){
+                System.out.print(root.value + " ");
+                preOrderRecursion(root.left);
+                preOrderRecursion(root.right);
+            }
+        }
+
+        void postOrderRecursion(Node root){
+            if(root != null){
+                postOrderRecursion(root.left);
+                postOrderRecursion(root.right);
+                System.out.print(root.value + " ");
+            }
         }
 
         @Override
         public void display() {
-            System.out.println("\t\t\t-Run Display");
+            System.out.println("\t\t\t\t~Display Traversal. With root value of " + root.value);
+
+            System.out.println("INORDER RECURSION:  ");
+            inOrderRecursion(root);
+            System.out.println();
+
+            System.out.println("PREORDER RECURSION:  ");
+            preOrderRecursion(root);
+            System.out.println();
+
+            System.out.println("POSTORDER RECURSION:  ");
+            postOrderRecursion(root);
+            System.out.println();
+
+        }
+
+        int minValue(Node root){
+            int leastNumber = root.value;
+            while(root.left != null){
+                leastNumber = root.left.value;
+                root = root.left;
+            }
+            return leastNumber;
+        }
+
+        Node deleteNodeRecursion(Node root, int value){
+            if(root == null){
+                return root;
+            }
+
+            if(value < root.value){
+                root.left = deleteNodeRecursion(root.left, value);
+            }else if(value > root.value){
+                root.right = deleteNodeRecursion(root.right, value);
+            }else{
+                if(root.left == null){
+                    return root.right;
+                }else if(root.right == null){
+                    return root.left;
+                }
+
+                root.value = minValue(root.right);
+
+                root.right = deleteNodeRecursion(root.right, root.value);
+            }
+            return root;
+        }
+
+        public void delete(int value){
+            deleteNodeRecursion(root, value);
+            System.out.println("\t\t\t\t~Complete Deletion of " + value);
+        }
+
+        void printTreeDetails(Node node, List<Integer> leafNodes, List<Integer> parentNodes) {
+            if (node == null) {
+                return;
+            }
+
+            //check if a leaf node
+            if (node.left == null && node.right == null) {
+                leafNodes.add(node.value);
+            }
+            // check if a parent node
+            else {
+                parentNodes.add(node.value);
+
+                // Call recursively on left and right children
+                if (node.left != null) {
+                    printTreeDetails(node.left, leafNodes, parentNodes);
+                }
+                if (node.right != null) {
+                    printTreeDetails(node.right, leafNodes, parentNodes);
+                }
+            }
+
+        }
+
+        public void treeStructure() {
+
+            List<Integer> leafNodes = new ArrayList<>();
+            List<Integer> parentNodes = new ArrayList<>();
+
+            printTreeDetails(root, leafNodes, parentNodes);
+
+            System.out.println("Root Node: " + root.value);
+            System.out.println("Parent Nodes: " + parentNodes.toString());
+            System.out.println("leaf Nodes: " + leafNodes.toString());
         }
     }
 }
