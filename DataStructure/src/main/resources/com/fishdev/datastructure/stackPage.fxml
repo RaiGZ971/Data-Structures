@@ -11,30 +11,30 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="424.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fishdev.datastructure.controllers.ArrayPageController">
+<AnchorPane prefHeight="424.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fishdev.datastructure.controllers.StackPageController">
    <children>
       <VBox alignment="CENTER" prefHeight="183.0" prefWidth="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Canvas height="194.0" width="359.0" />
             <HBox prefHeight="30.0" prefWidth="359.0">
                <children>
-                  <MFXCheckbox prefHeight="27.0" prefWidth="61.0" text="Display Structure" />
+                  <MFXCheckbox onAction="#displayStack" prefHeight="27.0" prefWidth="61.0" text="Display Structure" />
                   <Pane prefHeight="30.0" prefWidth="595.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <MFXButton prefHeight="18.0" prefWidth="176.0" text="Create Empty Stack">
+            <MFXButton onAction="#createStack" prefHeight="18.0" prefWidth="176.0" text="Create Empty Stack">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
             </MFXButton>
             <HBox prefHeight="31.0" prefWidth="359.0">
                <children>
-                  <MFXButton onAction="#clickedArrayInsert" prefHeight="66.0" prefWidth="77.0" text="Push">
+                  <MFXButton onAction="#clickedPush" prefHeight="66.0" prefWidth="77.0" text="Push">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </MFXButton>
-                  <MFXTextField fx:id="arrayInsertValue" alignment="CENTER" floatMode="BORDER" floatingText="value" prefHeight="57.0" prefWidth="84.0" />
+                  <MFXTextField fx:id="pushValue" alignment="CENTER" floatMode="BORDER" floatingText="value" prefHeight="57.0" prefWidth="84.0" />
                </children>
                <VBox.margin>
                   <Insets bottom="15.0" />
@@ -42,7 +42,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="359.0">
                <children>
-                  <MFXButton onAction="#clickedArrayDelete" prefHeight="40.0" prefWidth="77.0" text="Pop">
+                  <MFXButton onAction="#clickedPop" prefHeight="40.0" prefWidth="77.0" text="Pop">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -54,22 +54,22 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="370.0">
                <children>
-                  <MFXButton onAction="#clickedArrayDelete" prefHeight="48.0" prefWidth="77.0" text="Modify">
+                  <MFXButton onAction="#clickedModify" prefHeight="48.0" prefWidth="77.0" text="Modify">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </MFXButton>
-                  <MFXTextField fx:id="arrayDeleteValue" alignment="CENTER" floatMode="BORDER" floatingText="current value" prefHeight="5.0" prefWidth="56.0">
+                  <MFXTextField fx:id="modifyValue" alignment="CENTER" floatMode="BORDER" floatingText="current value" prefHeight="5.0" prefWidth="56.0">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </MFXTextField>
-                  <Label text="or">
+                  <Label text="to">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <MFXTextField fx:id="arrayDeleteIndex" alignment="CENTER" floatMode="BORDER" floatingText="update value" prefHeight="5.0" prefWidth="56.0" />
+                  <MFXTextField fx:id="modifyNewValue" alignment="CENTER" floatMode="BORDER" floatingText="new value" prefHeight="5.0" prefWidth="56.0" />
                </children>
             </HBox>
          </children>

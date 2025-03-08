@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 
 import com.fishdev.datastructure.DataStructures.*;
 
-public class LinkedListPageController extends GlobalController {
+public class LinkedListPageController{
 
     @FXML
     private MFXTextField deleteIndex, deleteValue, insertValue;
@@ -47,6 +47,7 @@ public class LinkedListPageController extends GlobalController {
     @FXML
     void clickedRemovedDuplicate(ActionEvent event) {
         System.out.println("\t\t\t-Run Remove Duplicate");
+        myObject.removeDuplicate();
 
     }
 }

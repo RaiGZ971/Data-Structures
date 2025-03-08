@@ -17,7 +17,7 @@
             <Canvas height="194.0" width="359.0" />
             <HBox prefHeight="30.0" prefWidth="359.0">
                <children>
-                  <MFXCheckbox prefHeight="27.0" prefWidth="61.0" text="Display Structure" />
+                  <MFXCheckbox onAction="#displayBinaryTree" prefHeight="27.0" prefWidth="61.0" text="Display Structure" />
                   <Pane prefHeight="30.0" prefWidth="595.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>

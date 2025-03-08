@@ -4,32 +4,52 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import com.fishdev.datastructure.DataStructures.*;
+
 public class ArrayPageController extends GlobalController {
 
     @FXML
-    private MFXTextField arrayDeleteIndex, arrayDeleteValue, arrayInsertValue;
+    private MFXTextField arraySize, deleteValue, insertValue, insertIndex;
+
+    Array myObject;
 
     @FXML
-    void clickedArrayAscending(ActionEvent event) {
-        System.out.println("[Running ascending order]");
-
+    void displayArray(ActionEvent event) {
+        System.out.println("\t\t\t-Run Display");
+        myObject.display();
     }
 
     @FXML
-    void clickedArrayDescending(ActionEvent event) {
-        System.out.println("[Running descending order]");
+    void createArray(ActionEvent event) {
+        System.out.println("\t\tCreating linked list...");
+        myObject = new Array();
+        myObject.configArray(Integer.parseInt(arraySize.getText()));
     }
 
     @FXML
-    void clickedArrayInsert(ActionEvent event) {
-        System.out.println("[Running insert value]");
-
+    void clickedInsert(ActionEvent event) {
+        if(insertIndex.getText().isEmpty()){
+            myObject.insert(insertValue.getText());
+            return;
+        }
+        myObject.insert(insertValue.getText(), insertIndex.getText());
     }
 
     @FXML
-    void clickedArrayDelete(ActionEvent event) {
-        System.out.println("[Running delete value]");
-
+    void clickedDelete(ActionEvent event) {
+        System.out.println("\t\t\t-Run Delete");
+        myObject.delete(deleteValue.getText());
     }
 
+    @FXML
+    void clickedAscending(ActionEvent event) {
+        System.out.println("\t\t\t-Run Ascending Order");
+        myObject.ascendingOrder();
+    }
+
+    @FXML
+    void clickedDescending(ActionEvent event) {
+        System.out.println("\t\t\t-Run Descending Order");
+        myObject.descendingOrder();
+    }
 }

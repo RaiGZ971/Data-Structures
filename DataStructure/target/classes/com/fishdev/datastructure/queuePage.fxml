@@ -10,30 +10,30 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="411.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fishdev.datastructure.controllers.ArrayPageController">
+<AnchorPane prefHeight="411.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fishdev.datastructure.controllers.QueuePageController">
    <children>
       <VBox alignment="CENTER" prefHeight="183.0" prefWidth="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Canvas height="194.0" width="359.0" />
             <HBox prefHeight="30.0" prefWidth="359.0">
                <children>
-                  <MFXCheckbox prefHeight="27.0" prefWidth="61.0" text="Display Structure" />
+                  <MFXCheckbox onAction="#displayQueue" prefHeight="27.0" prefWidth="61.0" text="Display Structure" />
                   <Pane prefHeight="30.0" prefWidth="595.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <MFXButton prefHeight="18.0" prefWidth="176.0" text="Create Empty Queue">
+            <MFXButton onAction="#createQueue" prefHeight="18.0" prefWidth="176.0" text="Create Empty Queue">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
             </MFXButton>
             <HBox prefHeight="31.0" prefWidth="359.0">
                <children>
-                  <MFXButton onAction="#clickedArrayInsert" prefHeight="66.0" prefWidth="77.0" text="Enqueue">
+                  <MFXButton onAction="#clickedEnqueue" prefHeight="66.0" prefWidth="77.0" text="Enqueue">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </MFXButton>
-                  <MFXTextField fx:id="arrayInsertValue" alignment="CENTER" floatMode="BORDER" floatingText="value" prefHeight="57.0" prefWidth="84.0" />
+                  <MFXTextField fx:id="enqueueValue" alignment="CENTER" floatMode="BORDER" floatingText="value" prefHeight="57.0" prefWidth="84.0" />
                </children>
                <VBox.margin>
                   <Insets bottom="15.0" />
@@ -41,7 +41,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="359.0">
                <children>
-                  <MFXButton onAction="#clickedArrayDelete" prefHeight="40.0" prefWidth="77.0" text="Pop">
+                  <MFXButton onAction="#clickedDequeue" prefHeight="40.0" prefWidth="77.0" text="Dequeue">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -53,12 +53,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="359.0">
                <children>
-                  <MFXButton onAction="#clickedArrayAscending" prefHeight="25.0" prefWidth="135.0" text="Reversed Linked List">
+                  <MFXButton onAction="#clickedHighlightFront" prefHeight="25.0" prefWidth="135.0" text="HIghlight Front">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </MFXButton>
-                  <MFXButton onAction="#clickedArrayAscending" prefHeight="25.0" prefWidth="135.0" text="Remove Duplicate" />
+                  <MFXButton onAction="#clickedHighlightRear" prefHeight="25.0" prefWidth="135.0" text="Highlight Rear" />
                </children>
             </HBox>
          </children>
